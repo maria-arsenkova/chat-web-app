@@ -1,0 +1,13 @@
+.UserPhoto {
+  border-radius: 100%;
+
+  &_small {
+    width: 45px;
+    height: 45px;
+  }
+
+  &_medium {
+    width: 60px;
+    height: 59px;
+  }
+}
