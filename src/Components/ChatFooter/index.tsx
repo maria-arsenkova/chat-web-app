@@ -3,7 +3,7 @@ import './style.scss'
 
 const ChatFooter = () => {
     return(
-        <input/>
+        <input type='text' className='ChatFooter__enter-text-message' placeholder="Enter text message..."/>
     )
 }
 
