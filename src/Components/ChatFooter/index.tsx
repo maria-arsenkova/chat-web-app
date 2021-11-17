@@ -3,8 +3,14 @@ import './style.scss'
 
 const ChatFooter = () => {
     return(
-        <input type='text' autoFocus={true} className='ChatFooter__enter-text-message' placeholder="Enter text message..."/>
-    )
+    <textarea
+        autoFocus={true}
+        rows={1}
+        className='ChatFooter__enter-text-message'
+        placeholder="Enter text message..."
+    />
+
+)
 }
 
 export {ChatFooter}

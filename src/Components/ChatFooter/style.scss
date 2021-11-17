@@ -1,19 +1,25 @@
 .ChatFooter {
   &__enter-text-message {
-    display: flex;
-    align-items: center;
+    resize: none;
+    padding-top: 21px;
+    padding-bottom: 21px;
     padding-left: 27px;
     height: 69px;
     background: #3A3A3A;
     box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.1);
     border: none;
+    outline:none;
     font-size: 26px;
     line-height: 31px;
     color: #FFFFFF;
+    font-family: inherit;
+    overflow-y: hidden;
   }
 
   &__enter-text-message::-webkit-input-placeholder {
+    resize: none;
     font-style: normal;
+    font-family: inherit;
     font-weight: 300;
     font-size: 26px;
     line-height: 31px;
