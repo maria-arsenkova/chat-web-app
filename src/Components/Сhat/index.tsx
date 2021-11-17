@@ -12,7 +12,7 @@ const user: UserType = {
 
 function Chat() {
     return (
-        <div>
+        <div className='Chat'>
             <ChatHeader user={user} />
             <ChatFooter />
         </div>
