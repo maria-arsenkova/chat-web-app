@@ -3,6 +3,7 @@ import './style.scss'
 import {UserType} from "../UserPhoto";
 import  elon from './img/elon.svg'
 import {ChatHeader} from "../ChatHeader";
+import {ChatFooter} from "../ChatFooter";
 
 const user: UserType = {
     avatar: elon,
@@ -13,6 +14,7 @@ function Chat() {
     return (
         <div>
             <ChatHeader user={user} />
+            <ChatFooter />
         </div>
     )
 }
