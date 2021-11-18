@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.scss'
 import elon from './img/elon.svg'
 import { ChatHeader } from '../ChatHeader'
@@ -44,11 +44,21 @@ const INITIAL_MESSAGE: MessageType[] = [
 ]
 
 function Chat() {
+  const [allMessages, setMessages] = useState<MessageType[]>(INITIAL_MESSAGE)
+
+  const onMessagesUpdate = (updatedMessages: MessageType[]) => {
+    setMessages(updatedMessages)
+  }
+
   return (
     <div className="Chat">
       <ChatHeader user={user} />
-      <Messages messages={INITIAL_MESSAGE} />
-      <ChatFooter user={user} />
+      <Messages messages={allMessages} />
+      <ChatFooter
+        user={user}
+        messages={allMessages}
+        onUpdateMessages={onMessagesUpdate}
+      />
     </div>
   )
 }

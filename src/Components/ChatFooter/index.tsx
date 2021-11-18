@@ -6,9 +6,11 @@ import { MessageType, UserType } from '../Messages/types'
 
 type ChatFooterType = {
   user: UserType
+  messages: MessageType[]
+  onUpdateMessages: (messages: MessageType[]) => void
 }
 
-const ChatFooter = ({ user }: ChatFooterType) => {
+const ChatFooter = ({ user, messages, onUpdateMessages }: ChatFooterType) => {
   const [message, setMessage] = useState<MessageType>({
     id: '',
     text: '',
@@ -45,7 +47,18 @@ const ChatFooter = ({ user }: ChatFooterType) => {
         }),
         author: message.author,
       })
+      updateMessages(message, messages)
     }
+  }
+
+  const updateMessages = (
+    newMessage: MessageType,
+    allMessages: MessageType[]
+  ) => {
+    console.log(newMessage)
+    console.log(allMessages)
+    const newMessages: MessageType[] = [...allMessages, newMessage]
+    onUpdateMessages(newMessages)
   }
 
   return (

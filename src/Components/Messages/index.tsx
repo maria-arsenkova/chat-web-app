@@ -12,7 +12,7 @@ const Messages = ({ messages }: MessageProps) => {
     <div className="Messages">
       {messages.map((item) => {
         return (
-          <div className="Messages__message">
+          <div className="Messages__message" key={item.id}>
             <div className="Messages__message-icon">
               <UserPhoto user={item.author} size={AVATAR_SIZE.MEDIUM} />
             </div>
@@ -22,7 +22,7 @@ const Messages = ({ messages }: MessageProps) => {
               </div>
               <span className="Messages__message-text">
                 {item.text}
-                <span className="Messages__message-time">{item.date}</span>
+                <span className="Messages__message-time"> {item.date}</span>
               </span>
             </div>
           </div>
