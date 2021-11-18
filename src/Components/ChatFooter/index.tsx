@@ -30,13 +30,14 @@ const ChatFooter = () => {
         newMessage: string,
         newDate: string,
     ) => {
-        setMessage({
-            id: newId,
-            text: newMessage,
-            date: newDate,
-            author: message.author,
-        });
-
+        if (newMessage.trim() !== "") {
+            setMessage({
+                id: newId,
+                text: newMessage,
+                date: newDate,
+                author: message.author,
+            });
+        }
     }
 
     const createMessage = () => {
