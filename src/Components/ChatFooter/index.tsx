@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import './style.scss'
 import {UserType} from "../UserPhoto";
-import vectorInacteve from './img/vector.svg'
+import vectorInacteve from './img/vectorInacteve.svg'
+import vectorActive from './img/vectorActive.svg'
 import {user} from "../Сhat";
 
 interface MessageProps {
@@ -23,33 +24,32 @@ const ChatFooter = () => {
         event.target.style.height = "auto";
         event.target.style.height = event.target.scrollHeight + "px";
     }
-    const vector:string = vectorInacteve
 
     const handleComment = (
         newId: string,
         newMessage: string,
         newDate: string,
     ) => {
-        if (newMessage.trim() !== "") {
             setMessage({
                 id: newId,
                 text: newMessage,
                 date: newDate,
                 author: message.author,
             });
-        }
     }
 
     const createMessage = () => {
-        setMessage({
-            id: message.id,
-            text: message.text,
-            date: new Date().toLocaleTimeString("en-US", {
-                hour: "numeric",
-                minute: "numeric",
-            }),
-            author: message.author,
-        })
+        if (message.text.trim() !== "") {
+            setMessage({
+                id: message.id,
+                text: message.text,
+                date: new Date().toLocaleTimeString("en-US", {
+                    hour: "numeric",
+                    minute: "numeric",
+                }),
+                author: message.author,
+            })
+        }
     }
 
     return(
@@ -61,8 +61,8 @@ const ChatFooter = () => {
                 placeholder="Enter text message..."
                 onChange={(event) => {handleTextAreaHeight(event);
                     handleComment(
-                        event.target.value,
                         Date.now().toString(),
+                        event.target.value,
                         new Date().toLocaleTimeString("en-US", {
                             hour: "numeric",
                             minute: "numeric",
@@ -73,7 +73,7 @@ const ChatFooter = () => {
             <button
             onClick={createMessage}
             >test</button>
-            <img src={vector}/>
+            <img alt='vector' src={message.text.trim() === "" ? vectorInacteve: vectorActive}/>
         </div>
 )
 }
