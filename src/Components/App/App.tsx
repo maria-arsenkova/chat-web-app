@@ -1,11 +1,9 @@
-import React from 'react';
-import './App.css';
-import {Chat} from "../Сhat";
+import React from 'react'
+import './App.css'
+import { Chat } from '../Сhat'
 
 function App() {
-  return (
-      <Chat />
-  );
+  return <Chat />
 }
 
-export default App;
+export default App
