@@ -12,25 +12,45 @@ const Messages = ({ messages }: MessageProps) => {
     <div className="Messages">
       {messages.map((item) => {
         return (
-          <div className="Messages__message" key={item.id}>
-            {item.author && (
-              <div className="Messages__message-icon">
-                <UserPhoto user={item.author} size={AVATAR_SIZE.MEDIUM} />
+          <>
+            {item.author.initials !== 'Я' ? (
+              <div
+                className="Messages__message Messages__message_left"
+                key={item.id}
+              >
+                <div className="Messages__message-icon">
+                  <UserPhoto user={item.author} size={AVATAR_SIZE.MEDIUM} />
+                </div>
+
+                <div className="Messages__message-content Messages__message-content_background-gray">
+                  <div className="Messages__message-title">
+                    {item.author.initials}
+                  </div>
+
+                  <div className="Messages__message-text">
+                    {item.text}
+                    <span className="Messages__message-time Messages__message-time_background-green">
+                      {item.date}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div
+                className="Messages__message Messages__message_right"
+                key={item.id}
+              >
+                <div className="Messages__message-content Messages__message-content_background-green">
+                  <div className="Messages__message-text">
+                    {item.text}
+                    <span className="Messages__message-time Messages__message-time_background-gray">
+                      {item.date}
+                    </span>
+                  </div>
+                </div>
               </div>
             )}
-
-            <div className="Messages__message-content">
-              {item.author?.initials && (
-                <div className="Messages__message-title">
-                  {item.author.initials}
-                </div>
-              )}
-              <span className="Messages__message-text">
-                {item.text}
-                <span className="Messages__message-time"> {item.date}</span>
-              </span>
-            </div>
-          </div>
+          </>
         )
       })}
     </div>

@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import './style.scss'
 import vectorInacteve from './img/vectorInacteve.svg'
 import vectorActive from './img/vectorActive.svg'
-import { MessageType, UserType } from '../Messages/types'
+import { MessageType } from '../Messages/types'
+import maria from '../Сhat/img/maria.jpg'
 
 type ChatFooterType = {
   messages: MessageType[]
@@ -14,6 +15,7 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
     id: '',
     text: '',
     date: '',
+    author: { initials: 'Я', avatar: maria },
   })
 
   const handleTextAreaHeight = (event: any) => {
@@ -30,6 +32,7 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
       id: newId,
       text: newMessage,
       date: newDate,
+      author: message.author,
     })
   }
 
@@ -42,6 +45,7 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
           hour: 'numeric',
           minute: 'numeric',
         }),
+        author: message.author,
       })
       updateMessages(message, messages)
     }

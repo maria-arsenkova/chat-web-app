@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './style.scss'
 import elon from './img/elon.svg'
+import maria from './img/maria.jpg'
 import { ChatHeader } from '../ChatHeader'
 import { ChatFooter } from '../ChatFooter'
 import { MessageType, UserType } from '../Messages/types'
@@ -40,6 +41,24 @@ const INITIAL_MESSAGE: MessageType[] = [
     date: '7:41 PM',
     text: 'Ok, just do it',
     id: '003',
+  },
+  {
+    author: {
+      avatar: elon,
+      initials: 'Elon Musk',
+    },
+    date: '7:41 PM',
+    text: 'Ok, just do it',
+    id: '004',
+  },
+  {
+    author: {
+      avatar: maria,
+      initials: 'Я',
+    },
+    date: '7:41 PM',
+    text: 'Hi First name, I need some time for creating study peport. 3 hours for everything',
+    id: '004',
   },
 ]
 
