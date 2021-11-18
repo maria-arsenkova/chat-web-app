@@ -5,17 +5,15 @@ import vectorActive from './img/vectorActive.svg'
 import { MessageType, UserType } from '../Messages/types'
 
 type ChatFooterType = {
-  user: UserType
   messages: MessageType[]
   onUpdateMessages: (messages: MessageType[]) => void
 }
 
-const ChatFooter = ({ user, messages, onUpdateMessages }: ChatFooterType) => {
+const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
   const [message, setMessage] = useState<MessageType>({
     id: '',
     text: '',
     date: '',
-    author: user,
   })
 
   const handleTextAreaHeight = (event: any) => {
@@ -32,7 +30,6 @@ const ChatFooter = ({ user, messages, onUpdateMessages }: ChatFooterType) => {
       id: newId,
       text: newMessage,
       date: newDate,
-      author: message.author,
     })
   }
 
@@ -45,7 +42,6 @@ const ChatFooter = ({ user, messages, onUpdateMessages }: ChatFooterType) => {
           hour: 'numeric',
           minute: 'numeric',
         }),
-        author: message.author,
       })
       updateMessages(message, messages)
     }

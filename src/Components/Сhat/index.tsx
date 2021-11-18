@@ -54,11 +54,7 @@ function Chat() {
     <div className="Chat">
       <ChatHeader user={user} />
       <Messages messages={allMessages} />
-      <ChatFooter
-        user={user}
-        messages={allMessages}
-        onUpdateMessages={onMessagesUpdate}
-      />
+      <ChatFooter messages={allMessages} onUpdateMessages={onMessagesUpdate} />
     </div>
   )
 }

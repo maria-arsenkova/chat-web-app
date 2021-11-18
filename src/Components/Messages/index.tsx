@@ -13,13 +13,18 @@ const Messages = ({ messages }: MessageProps) => {
       {messages.map((item) => {
         return (
           <div className="Messages__message" key={item.id}>
-            <div className="Messages__message-icon">
-              <UserPhoto user={item.author} size={AVATAR_SIZE.MEDIUM} />
-            </div>
-            <div className="Messages__message-content">
-              <div className="Messages__message-title">
-                {item.author.initials}
+            {item.author && (
+              <div className="Messages__message-icon">
+                <UserPhoto user={item.author} size={AVATAR_SIZE.MEDIUM} />
               </div>
+            )}
+
+            <div className="Messages__message-content">
+              {item.author?.initials && (
+                <div className="Messages__message-title">
+                  {item.author.initials}
+                </div>
+              )}
               <span className="Messages__message-text">
                 {item.text}
                 <span className="Messages__message-time"> {item.date}</span>
