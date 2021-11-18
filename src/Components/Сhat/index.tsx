@@ -5,7 +5,7 @@ import  elon from './img/elon.svg'
 import {ChatHeader} from "../ChatHeader";
 import {ChatFooter} from "../ChatFooter";
 
-const user: UserType = {
+export const user: UserType = {
     avatar: elon,
     initials: "Elon Musk",
 };
