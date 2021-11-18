@@ -4,13 +4,13 @@ import { AVATAR_SIZE, UserPhoto } from '../UserPhoto'
 import { MessageType } from './types'
 
 interface MessageProps {
-  message: MessageType[]
+  messages: MessageType[]
 }
 
-const Message = ({ message }: MessageProps) => {
+const Messages = ({ messages }: MessageProps) => {
   return (
     <div>
-      {message.map((item) => {
+      {messages.map((item) => {
         return (
           <div className="Message">
             <div className="Message__icon">
@@ -30,4 +30,4 @@ const Message = ({ message }: MessageProps) => {
   )
 }
 
-export { Message }
+export { Messages }

@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.scss'
-import { UserType } from '../Message/types'
+import { UserType } from '../Messages/types'
 
 export enum AVATAR_SIZE {
   SMALL = 'SMALL',

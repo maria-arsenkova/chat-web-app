@@ -3,8 +3,8 @@ import './style.scss'
 import elon from './img/elon.svg'
 import { ChatHeader } from '../ChatHeader'
 import { ChatFooter } from '../ChatFooter'
-import { MessageType, UserType } from '../Message/types'
-import { Message } from '../Message'
+import { MessageType, UserType } from '../Messages/types'
+import { Messages } from '../Messages'
 
 const user: UserType = {
   avatar: elon,
@@ -47,7 +47,7 @@ function Chat() {
   return (
     <div className="Chat">
       <ChatHeader user={user} />
-      <Message message={INITIAL_MESSAGE} />
+      <Messages messages={INITIAL_MESSAGE} />
     </div>
   )
 }

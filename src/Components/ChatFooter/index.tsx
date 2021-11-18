@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './style.scss'
 import vectorInacteve from './img/vectorInacteve.svg'
 import vectorActive from './img/vectorActive.svg'
-import { MessageType, UserType } from '../Message/types'
+import { MessageType, UserType } from '../Messages/types'
 
 type ChatFooterType = {
   user: UserType
