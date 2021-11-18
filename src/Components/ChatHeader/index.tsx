@@ -1,6 +1,7 @@
 import React from 'react'
 import './style.scss'
-import { AVATAR_SIZE, UserPhoto, UserType } from '../UserPhoto'
+import { AVATAR_SIZE, UserPhoto } from '../UserPhoto'
+import { UserType } from '../Message/types'
 
 interface ChatHeaderProps {
   user: UserType

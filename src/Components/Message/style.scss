@@ -1,0 +1,38 @@
+.Message {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 5px;
+
+  &__icon {
+    margin-right: 18px;
+  }
+
+  &__content {
+    padding: 10px 16px 10px 16px;
+    max-width: 470px;
+    border-radius: 9px;
+    background: #464646;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.07);
+    color: #ececec;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    padding-bottom: 5px;
+  }
+
+  &__text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  &__time {
+    font-size: 20px;
+    line-height: 24px;
+    color: #14FF72;
+  }
+}

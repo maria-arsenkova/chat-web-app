@@ -1,19 +1,15 @@
 import React, { useState } from 'react'
 import './style.scss'
-import { UserType } from '../UserPhoto'
 import vectorInacteve from './img/vectorInacteve.svg'
 import vectorActive from './img/vectorActive.svg'
-import { user } from '../Сhat'
+import { MessageType, UserType } from '../Message/types'
 
-interface MessageProps {
-  author: UserType
-  date: string
-  text: string
-  id: string
+type ChatFooterType = {
+  user: UserType
 }
 
-const ChatFooter = () => {
-  const [message, setMessage] = useState<MessageProps>({
+const ChatFooter = ({ user }: ChatFooterType) => {
+  const [message, setMessage] = useState<MessageType>({
     id: '',
     text: '',
     date: '',
