@@ -1,13 +1,19 @@
-.Message {
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: 9px;
+.Messages {
+  padding-top: 35px;
+
+  &__message {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 9px;
+  }
   //grid-template-columns: minmax(200px, 1fr) 35px;
-  &__icon {
+  &__message-icon {
+    display: flex;
+    align-items: flex-end;
     margin-right: 18px;
   }
 
-  &__content {
+  &__message-content {
     padding: 10px 16px 10px 16px;
     max-width: 470px;
     border-radius: 9px;
@@ -16,23 +22,23 @@
     color: #ececec;
   }
 
-  &__title {
+  &__message-title {
     font-weight: bold;
     font-size: 20px;
     line-height: 24px;
     padding-bottom: 5px;
   }
 
-  &__text {
+  &__message-text {
     font-style: normal;
     font-weight: normal;
     font-size: 20px;
     line-height: 24px;
   }
 
-  &__time {
+  &__message-time {
     font-size: 20px;
     line-height: 24px;
-    color: #14FF72;
+    color: #14ff72;
   }
 }

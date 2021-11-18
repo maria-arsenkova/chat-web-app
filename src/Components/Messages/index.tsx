@@ -9,18 +9,20 @@ interface MessageProps {
 
 const Messages = ({ messages }: MessageProps) => {
   return (
-    <div>
+    <div className="Messages">
       {messages.map((item) => {
         return (
-          <div className="Message">
-            <div className="Message__icon">
+          <div className="Messages__message">
+            <div className="Messages__message-icon">
               <UserPhoto user={item.author} size={AVATAR_SIZE.MEDIUM} />
             </div>
-            <div className="Message__content">
-              <div className="Message__title">{item.author.initials}</div>
-              <span className="Message__text">
+            <div className="Messages__message-content">
+              <div className="Messages__message-title">
+                {item.author.initials}
+              </div>
+              <span className="Messages__message-text">
                 {item.text}
-                <span className="Message__time">{item.date}</span>
+                <span className="Messages__message-time">{item.date}</span>
               </span>
             </div>
           </div>
