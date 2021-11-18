@@ -4,6 +4,7 @@ import { UserType } from '../UserPhoto'
 import elon from './img/elon.svg'
 import { ChatHeader } from '../ChatHeader'
 import { ChatFooter } from '../ChatFooter'
+import { ChatContent } from '../ChatContent'
 
 export const user: UserType = {
   avatar: elon,
@@ -14,6 +15,7 @@ function Chat() {
   return (
     <div className="Chat">
       <ChatHeader user={user} />
+      <ChatContent />
       <ChatFooter />
     </div>
   )
