@@ -48,6 +48,7 @@ function Chat() {
     <div className="Chat">
       <ChatHeader user={user} />
       <Messages messages={INITIAL_MESSAGE} />
+      <ChatFooter user={user} />
     </div>
   )
 }
