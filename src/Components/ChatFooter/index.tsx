@@ -71,10 +71,15 @@ const ChatFooter = () => {
           )
         }}
       />
-      <button onClick={createMessage}>test</button>
       <img
         alt="vector"
+        className={
+          message.text.trim() !== ''
+            ? 'ChatFooter__enter-text-message-icon'
+            : ''
+        }
         src={message.text.trim() === '' ? vectorInacteve : vectorActive}
+        onClick={createMessage}
       />
     </div>
   )
