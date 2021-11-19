@@ -1,8 +1,7 @@
 .Chat {
   display: grid;
-  ///min  и  max
   grid-template-columns: minmax(200px, 1fr);
-  grid-template-rows: 75px 1fr 70px;
+  grid-template-rows: 75px 1fr auto;
   height: 100vh;
   background: rgba(26, 26, 26, 1);
 }

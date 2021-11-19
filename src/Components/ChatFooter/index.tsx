@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import './style.scss'
 import vectorInacteve from './img/vectorInacteve.svg'
 import vectorActive from './img/vectorActive.svg'
@@ -11,6 +11,7 @@ type ChatFooterType = {
 }
 
 const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
+  const [textareaValue, setTextareaValue] = useState('')
   const [message, setMessage] = useState<MessageType>({
     id: '',
     text: '',
@@ -18,12 +19,22 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
     author: { initials: 'Я', avatar: maria },
   })
 
-  const handleTextAreaHeight = (event: any) => {
+  // Textarea Field handler
+  const handleUserTextarea = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setTextareaValue(event.target.value)
+  }
+
+  // Reset Textarea Field handler
+  const resetTextareaField = () => {
+    setTextareaValue('')
+  }
+
+  const handleTextAreaHeight = (event: ChangeEvent<HTMLTextAreaElement>) => {
     event.target.style.height = 'auto'
     event.target.style.height = event.target.scrollHeight + 'px'
   }
 
-  const handleComment = (
+  const handleMessage = (
     newId: string,
     newMessage: string,
     newDate: string
@@ -55,8 +66,6 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
     newMessage: MessageType,
     allMessages: MessageType[]
   ) => {
-    console.log(newMessage)
-    console.log(allMessages)
     const newMessages: MessageType[] = [...allMessages, newMessage]
     onUpdateMessages(newMessages)
   }
@@ -65,12 +74,13 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
     <div className="ChatFooter">
       <textarea
         autoFocus={true}
+        value={textareaValue}
         rows={1}
         className="ChatFooter__enter-text-message"
         placeholder="Enter text message..."
         onChange={(event) => {
           handleTextAreaHeight(event)
-          handleComment(
+          handleMessage(
             Date.now().toString(),
             event.target.value,
             new Date().toLocaleTimeString('en-US', {
@@ -78,6 +88,13 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
               minute: 'numeric',
             })
           )
+          handleUserTextarea(event)
+        }}
+        onKeyPress={(event) => {
+          if (event.key === 'Enter') {
+            createMessage()
+            resetTextareaField()
+          }
         }}
       />
       <img
@@ -88,7 +105,10 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
             : ''
         }
         src={message.text.trim() === '' ? vectorInacteve : vectorActive}
-        onClick={createMessage}
+        onClick={() => {
+          createMessage()
+          resetTextareaField()
+        }}
       />
     </div>
   )

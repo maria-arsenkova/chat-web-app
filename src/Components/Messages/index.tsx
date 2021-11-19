@@ -16,7 +16,7 @@ const Messages = ({ messages }: MessageProps) => {
             {item.author.initials !== 'Я' ? (
               <div
                 className="Messages__message Messages__message_left"
-                key={item.id}
+                key={`${item.id}_${item.text}`}
               >
                 <div className="Messages__message-icon">
                   <UserPhoto user={item.author} size={AVATAR_SIZE.MEDIUM} />
@@ -38,7 +38,7 @@ const Messages = ({ messages }: MessageProps) => {
             ) : (
               <div
                 className="Messages__message Messages__message_right"
-                key={item.id}
+                key={`${item.id}_${item.text}`}
               >
                 <div className="Messages__message-content Messages__message-content_background-green">
                   <div className="Messages__message-text">

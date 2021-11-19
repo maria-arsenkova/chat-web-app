@@ -10,7 +10,6 @@
     resize: none;
     padding-top: 16px;
     padding-bottom: 16px;
-    height: 70px;
     background: inherit;
     border: none;
     outline: none;
@@ -23,7 +22,6 @@
 
   &__enter-text-message::-webkit-input-placeholder {
     resize: none;
-    font-style: normal;
     font-family: inherit;
     font-weight: 300;
     font-size: 26px;
