@@ -1,0 +1,37 @@
+.ChatFooter {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) 35px;
+  align-items: center;
+  background: #3a3a3a;
+  padding-left: 27px;
+  padding-right: 27px;
+
+  &__enter-text-message {
+    resize: none;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    height: 70px;
+    background: inherit;
+    border: none;
+    outline: none;
+    font-size: 26px;
+    line-height: 31px;
+    color: #ffffff;
+    font-family: inherit;
+    overflow-y: hidden;
+  }
+
+  &__enter-text-message::-webkit-input-placeholder {
+    resize: none;
+    font-style: normal;
+    font-family: inherit;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 31px;
+    color: rgba(209, 209, 209, 1);
+  }
+
+  &__enter-text-message-icon {
+    cursor: pointer;
+  }
+}
