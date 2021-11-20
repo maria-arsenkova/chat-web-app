@@ -93,12 +93,12 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
           )
           handleUserTextarea(event)
         }}
-        onKeyPress={(event) => {
-          if (event.key === 'Enter') {
-            createMessage()
-            resetTextareaField()
-          }
-        }}
+        // onKeyPress={(event) => {
+        //   if (event.key === 'Enter' && !event.shiftKey) {
+        //     createMessage()
+        //      resetTextareaField()
+        //   }
+        // }}
       />
       <img
         alt="vector"
