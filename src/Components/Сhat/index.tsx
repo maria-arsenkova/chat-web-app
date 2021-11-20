@@ -14,6 +14,7 @@ const user: UserType = {
 
 const INITIAL_MESSAGE: MessageType[] = [
   {
+    type: 'message',
     author: {
       avatar: elon,
       initials: 'Elon Musk',
@@ -23,6 +24,7 @@ const INITIAL_MESSAGE: MessageType[] = [
     id: '01',
   },
   {
+    type: 'message',
     author: {
       avatar: elon,
       initials: 'Elon Musk',
@@ -34,6 +36,7 @@ const INITIAL_MESSAGE: MessageType[] = [
     id: '02',
   },
   {
+    type: 'message',
     author: {
       avatar: elon,
       initials: 'Elon Musk',
@@ -43,6 +46,7 @@ const INITIAL_MESSAGE: MessageType[] = [
     id: '03',
   },
   {
+    type: 'message',
     author: {
       avatar: maria,
       initials: 'Я',
@@ -71,7 +75,9 @@ function Chat() {
 
     ws.onmessage = (e) => {
       const message = JSON.parse(e.data)
-      setMessages([...messages, message])
+      if (message.type === 'message') {
+        setMessages([...messages, message])
+      }
     }
 
     return () => {

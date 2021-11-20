@@ -1,6 +1,7 @@
 import React from 'react'
 import './style.scss'
 import { UserType } from '../Messages/types'
+import userAvatar from './img/userAvatar.svg'
 
 export enum AVATAR_SIZE {
   SMALL = 'SMALL',
@@ -20,7 +21,13 @@ const UserPhoto = ({ user, size }: UserPhotoProps) => {
     className += 'UserPhoto_medium'
   }
 
-  return <img src={user.avatar} alt={user.initials} className={className} />
+  return (
+    <img
+      src={user.avatar ? user.avatar : userAvatar}
+      alt={user.initials}
+      className={className}
+    />
+  )
 }
 
 export { UserPhoto }

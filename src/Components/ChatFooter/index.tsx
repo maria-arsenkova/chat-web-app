@@ -13,6 +13,7 @@ type ChatFooterType = {
 const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
   const [textareaValue, setTextareaValue] = useState('')
   const [message, setMessage] = useState<MessageType>({
+    type: 'message',
     id: '',
     text: '',
     date: '',
@@ -40,6 +41,7 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
     newDate: string
   ) => {
     setMessage({
+      type: 'message',
       id: newId,
       text: newMessage,
       date: newDate,
@@ -50,6 +52,7 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
   const createMessage = () => {
     if (message.text.trim() !== '') {
       setMessage({
+        type: message.type,
         id: message.id,
         text: message.text,
         date: new Date().toLocaleTimeString('en-US', {
@@ -90,12 +93,12 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
           )
           handleUserTextarea(event)
         }}
-        onKeyPress={(event) => {
-          if (event.key === 'Enter') {
-            createMessage()
-            resetTextareaField()
-          }
-        }}
+        // onKeyPress={(event) => {
+        //   if (event.key === 'Enter' && !event.shiftKey) {
+        //     createMessage()
+        //      resetTextareaField()
+        //   }
+        // }}
       />
       <img
         alt="vector"

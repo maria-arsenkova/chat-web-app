@@ -4,6 +4,7 @@ export type UserType = {
 }
 
 export type MessageType = {
+  type: 'message'
   author: UserType
   date: string
   text: string
