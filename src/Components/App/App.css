@@ -32,3 +32,11 @@ body {
   font-size: 14px;
   line-height: 1.2;
 }
+
+.test {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  justify-items: stretch;
+  align-items: stretch;
+}

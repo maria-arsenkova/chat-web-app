@@ -3,7 +3,11 @@ import './App.css'
 import { Chat } from '../Сhat'
 
 function App() {
-  return <Chat />
+  return (
+    <div className="test">
+      <Chat />
+    </div>
+  )
 }
 
 export default App
