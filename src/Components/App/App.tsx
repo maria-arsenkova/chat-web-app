@@ -4,7 +4,7 @@ import { Chat } from '../Сhat'
 
 function App() {
   return (
-    <div className="test">
+    <div className="App">
       <Chat />
     </div>
   )

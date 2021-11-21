@@ -62,6 +62,7 @@ const ChatFooter = ({ messages, onMessagesUpdate }: ChatFooterType) => {
         author: message.author,
       })
       updateMessages(message, messages)
+      resetTextareaField()
     }
   }
 
@@ -93,12 +94,12 @@ const ChatFooter = ({ messages, onMessagesUpdate }: ChatFooterType) => {
           )
           handleUserTextarea(event)
         }}
-        // onKeyPress={(event) => {
-        //   if (event.key === 'Enter' && !event.shiftKey) {
-        //     createMessage()
-        //      resetTextareaField()
-        //   }
-        // }}
+        onKeyPress={(event) => {
+          if (event.key === 'Enter' && !event.shiftKey) {
+            createMessage()
+            //event.preventDefault()
+          }
+        }}
       />
       <img
         alt="vector"
@@ -110,7 +111,6 @@ const ChatFooter = ({ messages, onMessagesUpdate }: ChatFooterType) => {
         src={message.text.trim() === '' ? vectorInacteve : vectorActive}
         onClick={() => {
           createMessage()
-          resetTextareaField()
         }}
       />
     </div>

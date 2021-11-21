@@ -1,7 +1,9 @@
 .Messages {
   padding-top: 35px;
+  padding-bottom: 35px;
   display: flex;
   flex-direction: column;
+  max-height: 600px;
 
   &__message {
     display: flex;
@@ -66,7 +68,25 @@
       color: #14ff72;
     }
     &_background-gray {
-      color:  #DFDFDF;
+      color: #dfdfdf;
+    }
+  }
+
+  &__scrollBar {
+    overflow-y: scroll;
+    margin-right: 12px;
+
+    &::-webkit-scrollbar {
+      background: #3a3a3a;
+      border-radius: 8px;
+      width: 6px;
+      margin: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: #545454;
+      cursor: pointer;
     }
   }
 }
