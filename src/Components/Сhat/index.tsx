@@ -116,7 +116,7 @@ function Chat() {
   return (
     <div className="Chat">
       <ChatHeader user={user} />
-      {status === 'offline' ? alert('Нет соединения') : null}
+      {status === 'offline' ? alert('Нет соединения сообщения не будут отправлены') : null}
       <Messages messages={messages} />
       <ChatFooter messages={messages} onMessagesUpdate={onMessagesUpdate} />
     </div>
