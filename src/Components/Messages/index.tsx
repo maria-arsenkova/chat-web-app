@@ -9,7 +9,7 @@ interface MessageProps {
 
 const Messages = ({ messages }: MessageProps) => {
   return (
-    <div className="Messages">
+    <div className="Messages Messages__scrollBar">
       {messages.map((item) => {
         return (
           <>

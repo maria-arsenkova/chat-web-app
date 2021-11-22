@@ -1,12 +1,15 @@
 .ChatFooter {
+  align-items: center;
   display: grid;
   grid-template-columns: minmax(200px, 1fr) 35px;
-  align-items: center;
   background: #3a3a3a;
   padding-left: 27px;
   padding-right: 27px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 
   &__enter-text-message {
+    height: auto;
     resize: none;
     padding-top: 16px;
     padding-bottom: 16px;

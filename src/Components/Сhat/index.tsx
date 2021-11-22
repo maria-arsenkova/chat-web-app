@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './style.scss'
-import elon from './img/elon.svg'
+import elon from './img/elon.jpg'
 import maria from './img/maria.jpg'
 import { ChatHeader } from '../ChatHeader'
 import { ChatFooter } from '../ChatFooter'
@@ -11,7 +11,6 @@ const user: UserType = {
   avatar: elon,
   initials: 'Elon Musk',
 }
-
 const INITIAL_MESSAGE: MessageType[] = [
   {
     type: 'message',
@@ -60,16 +59,33 @@ const INITIAL_MESSAGE: MessageType[] = [
 let URL: string = 'wss://ws.qexsystems.ru'
 
 function Chat() {
-  const [messages, setMessages] = useState<MessageType[]>(INITIAL_MESSAGE)
+  const [messages, setMessages] = useState<MessageType[]>([])
   const [ws, setWs] = useState(new WebSocket(URL))
+  const [status, setStatus] = useState('')
 
-  const updateMessages = (allMessages: MessageType[]) => {
+  useEffect(() => {
+    updateMessages()
+  }, [])
+
+  const updateMessages = () => {
+    const collection = localStorage.getItem('allMessages')
+    if (collection != null) {
+      setMessages(JSON.parse(collection))
+    } else {
+      localStorage.setItem('allMessages', JSON.stringify(INITIAL_MESSAGE))
+      setMessages(INITIAL_MESSAGE)
+    }
+  }
+
+  const onMessagesUpdate = (allMessages: MessageType[]) => {
     ws.send(JSON.stringify(allMessages))
-    setMessages(allMessages)
+    localStorage.setItem('allMessages', JSON.stringify(allMessages))
+    updateMessages()
   }
 
   useEffect(() => {
     ws.onopen = () => {
+      setStatus('online')
       console.log('WebSocket Connected')
     }
 
@@ -77,23 +93,32 @@ function Chat() {
       const message = JSON.parse(e.data)
       if (message.type === 'message') {
         setMessages([...messages, message])
+        localStorage.setItem(
+          'allMessages',
+          JSON.stringify([...messages, message])
+        )
       }
     }
 
     return () => {
-      ws.onclose = () => {
+      ws.onclose = (event) => {
         console.log('WebSocket Disconnected')
+        setStatus('offline')
+        const collection = localStorage.getItem('allMessages')
+        if (collection != null) {
+          setMessages(JSON.parse(collection))
+        }
         setWs(new WebSocket(URL))
       }
     }
   }, [ws.onmessage, ws.onopen, ws.onclose, messages])
 
-  console.log(messages)
   return (
     <div className="Chat">
       <ChatHeader user={user} />
+      {status === 'offline' ? alert('Нет соединения') : null}
       <Messages messages={messages} />
-      <ChatFooter messages={messages} onUpdateMessages={updateMessages} />
+      <ChatFooter messages={messages} onMessagesUpdate={onMessagesUpdate} />
     </div>
   )
 }

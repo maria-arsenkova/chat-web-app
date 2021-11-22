@@ -7,10 +7,10 @@ import maria from '../Сhat/img/maria.jpg'
 
 type ChatFooterType = {
   messages: MessageType[]
-  onUpdateMessages: (messages: MessageType[]) => void
+  onMessagesUpdate: (messages: MessageType[]) => void
 }
 
-const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
+const ChatFooter = ({ messages, onMessagesUpdate }: ChatFooterType) => {
   const [textareaValue, setTextareaValue] = useState('')
   const [message, setMessage] = useState<MessageType>({
     type: 'message',
@@ -62,6 +62,7 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
         author: message.author,
       })
       updateMessages(message, messages)
+      resetTextareaField()
     }
   }
 
@@ -70,7 +71,7 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
     allMessages: MessageType[]
   ) => {
     const newMessages: MessageType[] = [...allMessages, newMessage]
-    onUpdateMessages(newMessages)
+    onMessagesUpdate(newMessages)
   }
 
   return (
@@ -93,12 +94,12 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
           )
           handleUserTextarea(event)
         }}
-        // onKeyPress={(event) => {
-        //   if (event.key === 'Enter' && !event.shiftKey) {
-        //     createMessage()
-        //      resetTextareaField()
-        //   }
-        // }}
+        onKeyPress={(event) => {
+          if (event.key === 'Enter' && !event.shiftKey) {
+            createMessage()
+            //event.preventDefault()
+          }
+        }}
       />
       <img
         alt="vector"
@@ -110,7 +111,6 @@ const ChatFooter = ({ messages, onUpdateMessages }: ChatFooterType) => {
         src={message.text.trim() === '' ? vectorInacteve : vectorActive}
         onClick={() => {
           createMessage()
-          resetTextareaField()
         }}
       />
     </div>
