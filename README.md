@@ -15,3 +15,11 @@ It correctly bundles React in production mode and optimizes the build for the be
 ### API Documentation:
 
 Web Socket server address: [wss://ws.qexsystems.ru](wss://ws.qexsystems.ru)
+
+### Data format 
+
+JSON
+
+### Description
+
+This is a simple chat (web application) messaging app. 
